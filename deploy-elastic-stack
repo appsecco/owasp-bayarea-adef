@@ -1,0 +1,15 @@
+#!/bin/bash
+#### Description: Deploys elastic stack machine and returns ip
+#### Written by: Appsecco - cloudsecuritytraining@appsecco.com
+#### Modified by: Appsecco - cloudsecuritytraining@appsecco.com
+
+
+if [ "$EUID" -eq 0 ]
+  then echo "Please run as student user!"
+  exit
+fi
+
+cd /home/student/adef/elastc-stack/terraform
+terraform init
+terraform plan -out elastic-stack.plan
+terraform apply elastic-stack.plan
